@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\TipoProduto;
-use App\Models\Produto;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,31 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('tipoproduto', "App\Http\Controllers\TipoProdutoController@index");
-Route::get('tipoproduto/create', "App\Http\Controllers\TipoProdutoController@create");
-Route::post('tipoproduto', "App\Http\Controllers\TipoProdutoController@store");
+Route::get('tipoproduto', "App\Http\Controllers\TipoProdutoController@index")->name("tipoproduto.index");
+Route::get('tipoproduto/create', "App\Http\Controllers\TipoProdutoController@create")->name("tipoproduto.create");
+Route::post('tipoproduto', "App\Http\Controllers\TipoProdutoController@store")->name("tipoproduto.store");
 
-Route::get('produto', "App\Http\Controllers\ProdutoController@index");
-Route::get('produto/create', "App\Http\Controllers\ProdutoController@create");
-Route::post('produto', "App\Http\Controllers\ProdutoController@store");
+// Comando para definir de forma automática todas as rotas criados pelo --resource
+Route::get('produto', "App\Http\Controllers\ProdutoController@index")->name("produto.index");
+Route::get('produto/create', "App\Http\Controllers\ProdutoController@create")->name("produto.create");
+Route::post('produto', "App\Http\Controllers\ProdutoController@store")->name("produto.store");
 
-
-
-
-//tarefa 4
-Route::get("tipoproduto/add/{descricao}", function($descricao){
-    $tipoProduto = new TipoProduto();
-    $tipoProduto->descricao = $descricao;
-    $tipoProduto->save();
-});
-
-Route::get("produto/add/{nome}/{preco}/{Tipo_Produtos_id}/{ingredientes}/{urlImage}",
-function($nome, $preco, $Tipo_Produtos_id, $ingredientes, $urlImage){
-    $produto = new Produto();
-    $produto->nome = $nome;
-    $produto->preco = $preco;
-    $produto->Tipo_Produtos_id = $Tipo_Produtos_id;
-    $produto->ingredientes = $ingredientes;
-    $produto->urlImage = $urlImage;
-    $produto->save();
-});
+//Route::resource('produto', "App\Http\Controllers\ProdutoController");

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create de Produto</title>
+    <title>Criar produto</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
@@ -12,48 +12,38 @@
 </head>
 <body>
     <div class="container">
-        <form method="post" action="/produto">
+        <form action="/produto" method="POST">
             @csrf
             <div class="form-group">
-                <label for="id-input-id">ID</label>
+                <label for="id-input-id" class="form-label">ID</label>
                 <input type="text" class="form-control" id="id-input-id" aria-describedby="idHelp" placeholder="#" disabled>
-                <small id="idHelp" class="form-text text-muted">Não é necessário informar o ID para cadastrar um novo dado.</small>
+                <div id="id" class="form-text">Não será necessário cadastrar um id</div>
             </div>
             <div class="form-group">
-                <label for="id-input-nome">Nome do Produto</label>
-                <input name="nome" type="text" class="form-control" id="id-input-nome" placeholder="Digite o nome do Produto">
+                <label for="id-input-nome" class="form-label">Nome</label>
+                <input name="nome" type="text" class="form-control" id="id-input-nome" placeholder="Digite o nome" required>
             </div>
             <div class="form-group">
-                <label for="id-input-preco">Preço</label>
-                <input name="preco" type="number" class="form-control" id="id-input-preco" placeholder="Digite o preço do produto">
-            </div>
-
-            <div class="form-group">
-                <label for="id-select-Tipo_Produtos_id">Tipo do Produto</label>
-                <select name="Tipo_Produtos_id" id="id-select-Tipo_Produtos_id" class="form-select" aria-label="Default select example">
-                    <option selected> Opem and select menu</option>
-                    @foreach ($tipoProdutos as $tipoProduto)
-                    <option value={{$tipoProduto->id}}>{{$tipoProduto->descricao}}</option>
-                    @endforeach
-                </select>
-
-            </div>
-
-            <div class="form-group">
-                <label for="id-input-ingredientes">Ingredientes</label>
-                <input name="ingredientes" type="text" class="form-control" id="id-input-ingredientes" placeholder="Digite os ingredientes do produto">
+                <label for="id-input-preco" class="form-label">Preço</label>
+                <input name="preco" type="text" class="form-control" id="id-input-preco" placeholder="Digite o preço" required>
             </div>
             <div class="form-group">
-                <label for="id-input-urlImage">Imagem</label>
-                <input name="urlImage" type="text" class="form-control" id="id-input-urlImage" placeholder="inclua uma imagem do produto">
+                <label for="id-input-Tipo_Produtos_id" class="form-label">Tipo</label>
+                <input name="Tipo_Produtos_id" type="text" class="form-control" id="id-input-Tipo_Produtos_id" placeholder="Digite o tipo" required>
+              </div>
+            <div class="form-group">
+                <label for="id-input-ingredientes" class="form-label">Ingredientes</label>
+                <input name="ingredientes" type="text" class="form-control" id="id-input-ingredientes" placeholder="Digite os ingredientes" required>
             </div>
-
-
+            <div class="form-group">
+                <label for="id-input-urlImage" class="form-label">Url Image</label>
+                <input name="urlImage" type="text" class="form-control" id="id-input-urlImage" placeholder="Digite a urlImage" required>
+            </div>
             <div class="my-1">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <a class="btn btn-primary" href="/produto">Voltar</a>
+                <a href="/produto" class="btn btn-primary">Voltar</a>
+                <button type="submit" class="btn btn-primary">Salvar</button>
             </div>
-        </form>
+          </form>
     </div>
 </body>
 </html>

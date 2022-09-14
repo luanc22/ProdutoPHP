@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Produto;
 use Illuminate\Support\Facades\DB;
+use App\Models\Produto;
 
 class ProdutoController extends Controller
 {
@@ -15,25 +15,26 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        // SELECT * FROM TIPO_PRODUTOS e armazenando o resultado no objeto $tipoProdutos
-        // Esse objeto é um vetor de models
-        //$tipoProdutos = TipoProduto::all();
-        $produtos = DB::select("SELECT PRODUTOS.ID as id,
-                                PRODUTOS.NOME as nome,
-                                    PRODUTOS.PRECO as preco,
-                                    TIPO_PRODUTOS.DESCRICAO as descricao
-                                FROM PRODUTOS
-                                JOIN TIPO_PRODUTOS ON PRODUTOS.TIPO_PRODUTOS_ID = TIPO_PRODUTOS.ID;");
-
+        $produtos = DB::select('SELECT * FROM Produtos');
         return view("Produto/index")->with("produtos", $produtos);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        $tipoProdutos = DB::select("SELECT * FROM TIPO_PRODUTOS");
-        return view("Produto/create") -> with("tipoProdutos", $tipoProdutos);
+        return view("Produto/create");
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $produto = new Produto();
@@ -42,7 +43,6 @@ class ProdutoController extends Controller
         $produto->Tipo_Produtos_id = $request->Tipo_Produtos_id;
         $produto->ingredientes = $request->ingredientes;
         $produto->urlImage = $request->urlImage;
-
         $produto->save();
         return $this->index();
     }

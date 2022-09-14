@@ -44,7 +44,7 @@ class TipoProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        $tipoProduto = new TipoProduto();
+        $tipoProduto = TipoProduto();
         $tipoProduto->descricao = $request->descricao;
         $tipoProduto->save();
         return $this->index();

@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container">
-        <form method="post" action="/tipoproduto">
+        <form method="post" action={{route("tipoproduto.create")}}>
             @csrf
             <div class="form-group">
                 <label for="id-input-id">ID</label>

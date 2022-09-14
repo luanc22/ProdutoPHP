@@ -12,17 +12,16 @@
 </head>
 <body>
     <div class="container">
-        {{-- <?php print_r($produtos) ?> --}}
-        <a class="btn btn-primary" href="produto/create">Criar Produto</a>
+        <a class="btn btn-primary" href="{{route("produto.create")}}">Criar Produto</a>
         <a class="btn btn-primary" href="#">Voltar</a>
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Nome do Produto</th>
+                    <th scope="col">Nome</th>
                     <th scope="col">Preço</th>
-                    <th scope="col">Tipo de produto Id</th>
-
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,16 +30,16 @@
                         <th scope="row">{{$produto->id}}</th>
                         <td>{{$produto->nome}}</td>
                         <td>{{$produto->preco}}</td>
-                        <td>{{$produto->descricao}}</td>
+                        <td>{{$produto->Tipo_Produtos_id}}</td>
                         <td>
                             <a href="#" class="btn btn-primary">Mostrar</a>
                             <a href="#" class="btn btn-secondary">Editar</a>
-                            <a href="#" class="btn btn-danger">Remover</a>
+                            <a href="#" class="btn btn-danger class-button-destroy">Remover</a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
-        </table>
+          </table>
     </div>
 </body>
 </html>

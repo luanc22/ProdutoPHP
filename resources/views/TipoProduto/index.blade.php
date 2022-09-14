@@ -13,8 +13,8 @@
 <body>
     <div class="container">
         {{-- <?php print_r($tipoProdutos) ?> --}}
-        <a class="btn btn-primary" href="tipoproduto/create">Criar TipoProduto</a>
-        <a class="btn btn-primary" href="#">Voltar</a>
+        <a class="btn btn-primary" href="{{route("tipoproduto.create")}}">Criar TipoProduto</a>
+        <a class="btn btn-primary" href="{{route("produto.index")}}">Voltar</a>
         <table class="table table-hover">
             <thead>
                 <tr>
